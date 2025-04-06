@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>音效網站</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #000;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    #main {
+      display: none;
+    }
+    img {
+      width: 80%;
+      max-width: 300px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+      cursor: pointer;
+    }
+    #login input {
+      padding: 10px;
+      font-size: 18px;
+      margin: 10px;
+    }
+    #login button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <h2>請輸入密碼</h2>
+    <input type="password" id="password" placeholder="輸入密碼">
+    <br>
+    <button onclick="checkPassword()">進入</button>
+    <p id="error"></p>
+  </div>
+
+  <div id="main">
+    <h1>點圖片播放聲音</h1>
+    <img src="image1.jpg" onclick="playSound('sound1.mp3')" alt="圖片1">
+    <img src="image2.jpg" onclick="playSound('sound2.mp3')" alt="圖片2">
+    <img src="image3.jpg" onclick="playSound('sound3.mp3')" alt="圖片3">
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pwd = document.getElementById('password').value;
+      if (pwd === '666') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('main').style.display = 'block';
+      } else {
+        document.getElementById('error').textContent = '密碼錯誤，請再試一次。';
+      }
+    }
+
+    function playSound(src) {
+      const audio = new Audio(src);
+      audio.play();
+    }
+  </script>
+</body>
+</html>
